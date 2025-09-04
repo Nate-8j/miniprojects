@@ -1,4 +1,4 @@
-from config import KEY
+from VersesBible.config import KEY
 import requests
 
 query = "nature"
