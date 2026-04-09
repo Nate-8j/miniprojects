@@ -14,6 +14,17 @@
 # print(cnt)
 
 
+# from ipaddress import *
+
+# for m in range(16, 25):
+#     net = ip_network(f'199.59.129.3/{m}', False)
+#     res = []
+#     for ip in net:
+#         s = bin(int(ip))[2:].zfill(32)
+#         res.append(s[:16].count('1') >= s[16:].count('1'))
+#     if all(res):
+#         print(net.netmask)
+
 from ipaddress import *
 cnt = 0
 for m in range(17, 25):

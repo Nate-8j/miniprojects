@@ -107,9 +107,25 @@
 #     if all(f(x, a) for x in range(1, 1000)):
 #         print(a)
 
+# ----------------------------------
+
+# from itertools import product
+
+# p = [''.join(i) for i in product('01', repeat=8) if i[:2]==('1', '1')]
+# q = [''.join(i) for i in product('01', repeat=8) if i[-1]=='0']
+# a = []
+
+
+# for x0 in product('01', repeat=8):
+#     x = ''.join(x0)
+#     if ((x not in a) <= ((x in p) or (x not in q))) == 0:
+#         a.append(x)
+
+# print(len(a))
+
 
 # ============================
-### кол-во решенных задач: 14
+### кол-во решенных задач: 18
 # ============================
 
 
