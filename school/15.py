@@ -4,50 +4,8 @@
 
 # в задачи на DEL(n, m) брать огромный диапазон 100000 пример
 
-### ВСЕГДА ПИСАТЬ КОД ТАК, И ПРОВЕРЯТЬ НА ГРАНИЦАХ      ЕСТЬ ЛИ РАЗРЫВ
-# p = [x/10 for x in range(1010, 1430 + 1)]
-# q = [x/10 for x in range(1440, 1990 +1)]
-# a = [x/10 for x in range(1010, 2000)]
-
-# for x0 in range(1010, 2000):
-#     x = x0/10
-#     if ((x in a) <= ((x in p) or (x in q))) == 0:
-#         a.remove(x)
-# print(a)
-
 
 """1"""
-
-# def f(n, m):
-#     return n % m == 0
-
-# for a in range(1, 10000):
-#     for x in range(1, 10000):
-#         if ((not(f(x, a))) <= ((not(f(x, 18))) or (not(f(x, 42))))) == 0:
-#             break
-#     else:
-#         print(a)
-
-
-# def f(x, a):
-#     return ((not(x%a==0)) <= ((not(x%18==0)) or (not(x%42==0))))
-
-# for a in range(1, 10000):
-#     if all(f(x, a) for x in range(1, 10000)):
-#         print(a)
-
-
-# ----------------------------------
-
-# def f(x, a):
-#     return ((x & 34 != 0) <= ((x&41 == 0) <= (x&a != 0)))
-
-# for a in range(1, 10000):
-#     if all(f(x, a) for x in range(1, 10000)):
-#         print(a)
-#         break
-
-# ----------------------------------
 
 
 # def f(x, y, a):
@@ -56,17 +14,6 @@
 # for a in range(1, 1000):
 #     if all(f(x, y, a) for x in range(1, 1000) for y in range(1, 1000)):
 #         print(a, 1)
-#         break
-
-# for a in range(1, 10000):
-#     for x in range(1, 10000):
-#         for y in range(1, 10000):
-#             if f(x, y, a) == 0:
-#                 break
-#         if f(x, y, a) == 0:
-#             break
-#     else:
-#         print(a)
 #         break
 
 # ----------------------------------
@@ -96,43 +43,49 @@
 # print(a)
 # print(17-3)
 
+### Лучше ПИСАТЬ КОД ТАК, И ПРОВЕРЯТЬ НА ГРАНИЦАХ, ЕСТЬ ЛИ РАЗРЫВ
+# p = [x/10 for x in range(1010, 1430 + 1)]
+# q = [x/10 for x in range(1440, 1990 +1)]
+# a = [x/10 for x in range(1010, 2000)]
+
+# for x0 in range(1010, 2000):
+#     x = x0/10
+#     if ((x in a) <= ((x in p) or (x in q))) == 0:
+#         a.remove(x)
+# print(a)
+
 # ----------------------------------
 
-""" 3 """
 
-# def f(x, a):
-#     return (((x + 40 < a) or (x+a <40)) <= (x%a==0))
+### ЭТОТ АЛГОС ЛУЧШЕ
 
-# for a in range(1, 1000):
-#     if all(f(x, a) for x in range(1, 1000)):
-#         print(a)
+# def f(x):
+#     p = 10<=x<=29
+#     q = 13<=x<=18
+#     a = a1<=x<=a2
+#     return (a<=p) or q
 
-# ----------------------------------
+# d = [y for x in (10, 29, 13, 18) for y in (x, x+0.1, x-0.1)]
+# r = []
 
-# from itertools import product
+# for a1 in d:
+#     for a2 in d:
+#         if a2>=a1 and all(f(x) for x in d):
+#             r.append(a2-a1)
+# print(max(r))
 
-# p = [''.join(i) for i in product('01', repeat=8) if i[:2]==('1', '1')]
-# q = [''.join(i) for i in product('01', repeat=8) if i[-1]=='0']
-# a = []
+# ah = []
+# def f(x):
+#     p = x in list(range(2, 21, 2))
+#     q = x in list(range(3, 31, 3))
+#     a = x in ah
+#     return (p<=a) or ((not a) <= (not q))
 
-
-# for x0 in product('01', repeat=8):
-#     x = ''.join(x0)
-#     if ((x not in a) <= ((x in p) or (x not in q))) == 0:
-#         a.append(x)
-
-# print(len(a))
-
+# for x in range(1, 10000):
+#     if f(x) == 0:
+#         ah.append(x)
+# print(ah)
 
 # ============================
-### кол-во решенных задач: 18
+### кол-во решенных задач: 30
 # ============================
-
-
-def f(x, a):
-    return ((x%4 != 3) or (x%6!=1)) <= (x%36!=a)
-
-for a in range(1, 100000):
-    if all(f(x, a) for x in range(1, 100000)):
-        print(a)
-        break
