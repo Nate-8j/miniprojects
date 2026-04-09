@@ -53,11 +53,10 @@
 
 # -----------------------------------------------------------------
 
-s = "0123456789abcdefghijklmnopqrstuvwxyz"
-res = []
-for x in s[:16]:
-    for y in s[:16]:
-        a = int(f"27a{x}23", 16) + int(f"8{y}e5d2", 16)
-        if a % 5 == 0:
-            res.append(int(x, 16) + int(y, 16))
-print(max(res))
+s = '0123456789abcdefghijklmnopqrstuvwxyz'
+for x in s[:15]:
+    for y in s[:17]:
+        a = int(f'123{x}5', 15) + int(f'67{y}9', 17)
+        if a%131 == 0:
+            if y < x:
+                print(a//131)
