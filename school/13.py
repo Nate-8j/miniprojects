@@ -25,7 +25,7 @@
 #     if all(res):
 #         print(net.netmask)
 
-from ipaddress import *
+from ipaddress import ip_network
 cnt = 0
 for m in range(17, 25):
     net = ip_network(f'255.211.33.160/{m}', False)
